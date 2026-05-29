@@ -2,6 +2,8 @@
 
 FastAPI backend for collaborative market research report sections: report sharing, section edits with optimistic concurrency, history, revert, and AI-assisted rewrite through a swappable LLM client.
 
+For visual architecture and flow diagrams, see [docs/architecture-diagrams.md](docs/architecture-diagrams.md).
+
 ## Requirements
 
 - Python 3.12+
