@@ -187,17 +187,3 @@ Concurrency is section-level and uses ETags. Reads return `ETag: "<version>"`; `
 The audit table is the version history. Revert appends a new `revert` edit whose new content equals the selected edit's `content_before`; historical rows are never mutated. AI rewriting is isolated behind `LLMClient`; the in-memory implementation is deterministic, records calls, and can raise for tests. Provider failures return `502` before any write occurs.
 
 Logging uses Python `logging` with `key=value` structured lines because it is readable locally and easy to parse centrally. Every write includes `request_id`, `user_id`, `report_id`, action/source, and section/version where applicable. Request IDs come from `X-Request-ID` or a generated UUID4 and are also passed into the LLM client.
-
-## What I would do next
-
-- Add OpenAPI examples for the main edit/share flows.
-- Add a production LLM provider adapter outside the route/service layers.
-- Add service-level metrics for write conflicts, LLM failures, and edit latency.
-- Add CI that provisions PostgreSQL and runs Alembic upgrade/downgrade plus pytest.
-
-## Screen recording outline
-
-1. Run `alembic upgrade head` and `pytest`.
-2. Show the three-layer layout and migration.
-3. Demo ETag read, successful patch, stale patch returning `412`.
-4. Demo history, revert, and AI rewrite with request-id propagation.
