@@ -82,6 +82,8 @@ async def seed_db():
                 )
             )
         await session.commit()
+    yield
+    await engine.dispose()
 
 
 @pytest_asyncio.fixture
