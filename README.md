@@ -1,8 +1,14 @@
 # BlueKnight MRR Collaboration Backend
 
-FastAPI backend for collaborative market research report sections: report sharing, section edits with optimistic concurrency, history, revert, and AI-assisted rewrite through a swappable LLM client.
+Take-home backend assessment: a FastAPI service for collaborative editing of market research report sections, with ETag-based optimistic concurrency, append-only version history, role-based sharing (owner/editor/viewer), and a swappable LLM rewrite client.
 
 For visual architecture and flow diagrams, see [docs/architecture-diagrams.md](docs/architecture-diagrams.md).
+
+## Tech Stack
+
+- **Python 3.12+**, **FastAPI**, async **SQLAlchemy**, **Alembic**, **PostgreSQL**
+- **JWT** authentication, **pytest** with real PostgreSQL fixtures
+- Swappable **LLM client** (in-memory stub for tests, provider-agnostic interface)
 
 ## Requirements
 
